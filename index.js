@@ -2,7 +2,7 @@ var Glob = require('glob').Glob,
     fs = require('fs'),
     path = require('path'),
     _ = require('lodash'),
-    useref = require('useref'),
+    useref = require('node-useref'),
     gulp = require('gulp'),
     gulpif = require('gulp-if'),
     concat = require('gulp-concat'),
@@ -37,6 +37,7 @@ module.exports = function(globs, opt){
                 }
 
                 _.forEach(css, function (paths, name) {
+                    paths = paths.assets;
                     if (name !== '' && paths.length) {
                         prefixPath(paths);
 
@@ -48,6 +49,7 @@ module.exports = function(globs, opt){
                 });
 
                 _.forEach(js, function (paths, name) {
+                    paths = paths.assets;
                     if (name !== '' && paths.length) {
                         prefixPath(paths);
 
